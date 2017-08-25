@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, session, redirect, url_for, flash
+from flask import Flask, render_template, session, redirect, url_for
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
@@ -7,6 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 from flask_sqlalchemy import SQLAlchemy
+from flask_script import Shell
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -21,7 +22,6 @@ manager = Manager(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 db = SQLAlchemy(app)
-
 
 class Role(db.Model):
 	__tablename__ = 'roles'
@@ -46,6 +46,10 @@ class User(db.Model):
 class NameForm(FlaskForm):
 	name = StringField('What is your name?', validators=[Required()])
 	submit = SubmitField('Submit')
+
+def make_shell_context():
+    return dict(app=app,db=db,User=User,Role=Role)
+manager.add_command("shell",Shell(make_context=make_shell_context))
 
 
 @app.errorhandler(404)
@@ -78,5 +82,4 @@ def index():
 
 
 if __name__ == '__main__':
-	db.create_all()
 	manager.run()
