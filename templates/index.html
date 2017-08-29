@@ -1,7 +1,9 @@
-{% extends "base.html" %}
+<!基模板的衍生模板>
+{% extends "base.html" %}<!extends 指令声明这个模板衍生自base.html.在extends 指令之后，基模板中的块被
+重新定义,Jinja2 模板引擎会将其插入适当的位置>
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}Flasky{% endblock %}<!block 标签定义的元素可在衍生模板中修改>
 
 {% block page_content %}
 <div class="page-header">

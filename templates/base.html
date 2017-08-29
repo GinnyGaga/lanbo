@@ -3,7 +3,7 @@
 {% block title %}Flasky{% endblock %}
 
 {% block head %}
-{{ super() }}
+{{ super() }}<!注意新定义的head 块，在基模板中其内容不是空的，所以使用super() 获取原来的内容。>
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 {% endblock %}
