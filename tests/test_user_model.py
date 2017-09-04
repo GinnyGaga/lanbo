@@ -8,7 +8,7 @@ class UserModelTestCase(unittest.TestCase):
 
 	def test_no_password_getter(self):
 		u=User(password='cat')
-		with self.asserRaises(AttributeError):
+		with self.assertRaises(AttributeError):
 			u.password
 
 	def test_password_verification(self):
@@ -19,5 +19,6 @@ class UserModelTestCase(unittest.TestCase):
 	def test_password_salts_are_random(self):
 		u=User(password='cat')
 		u2=User(password='cat')
-		self.assertTure(u.password_hash != u2.password_hash)
+		self.assertTrue(u.password_hash != u2.password_hash)
+		
 
