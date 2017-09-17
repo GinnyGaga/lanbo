@@ -16,13 +16,26 @@ class RegistrationForm(Form):
 	password2=PasswordField('Confirm password',validators=[Required()])
 	submit=SubmitField('Register')
 
-def validate_email(self,field):
-	if User.query.filter_by(email=filed.data).first():
-		raise ValidationError('Email already registered.')
+	def validate_email(self,field):
+		if User.query.filter_by(email=field.data).first():
+			raise ValidationError('Email already registered.')
 
-def validate_username(self,field):
-	if user.query.filter_by(username=field.data).first():
-		raise ValidationError('Username already in use.')
+	def validate_username(self,field):
+		if User.query.filter_by(username=field.data).first():
+			raise ValidationError('Username already in use.')
+		
+
+class ChangePasswordForm(Form):
+	old_password=PasswordField('Old password',validators=[Required()])
+
+	password=PasswordField('New password',validators=[
+		Required(),EqualTo('password2',message='Passwords must match')])
+
+	password2=PasswordField('Confirm new password',validators=[Required()])
+
+	submit=SubmitField('Update Password')
+
+
 
 class LoginForm(Form):
 	email = StringField('Email',validators=[Required(),Length(1,64),Email()])
