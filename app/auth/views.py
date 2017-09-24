@@ -113,7 +113,7 @@ def password_reset(token):
 		return redirect(url_for('main.index'))
 	form=PasswordResetForm()
 	if form.validate_on_submit():
-		user=User.query.filter_by(email=form.data).first()
+		user=User.query.filter_by(email=form.email.data).first()
 		if user is None:
 			return redirect(url_for('main.index'))
 		if user.reset_password(token,form.password.data):
