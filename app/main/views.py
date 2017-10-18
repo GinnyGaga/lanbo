@@ -60,7 +60,7 @@ def edit_profile_admin(id):
 		db.session.add(user)
 		flash('The profile has been updated.')
 		return redirect(url_for('.user',username=user.username))
-	form.emil.data = user.email
+	form.email.data = user.email
 	form.username.data = user.username
 	form.confirmed.data = user.confirmed
 	form.role.data = user.role_id
