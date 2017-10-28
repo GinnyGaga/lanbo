@@ -9,7 +9,7 @@ from .errors import forbidden
 def get_posts():
 	page = request.args.get('page',1,type=int)
 	pagination = Post.query.paginate(
-		page,per_page=current_app.config.config['FLASKY_POSTS_PER_PAGE'],error_out=False)
+		page,per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],error_out=False)
 	posts=pagination.items
 	prev=None
 	if pagination.has_prev:
