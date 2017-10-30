@@ -11,12 +11,14 @@ def get_posts():
 	pagination = Post.query.paginate(
 		page,per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],error_out=False)
 	posts=pagination.items
+
 	prev=None
 	if pagination.has_prev:
 		prev = url_for('api.get_posts',page=page-1,_external=True)
+
 	next=None
 	if pagination.has_next:
-		next = url_for('api.get_posts',page=page-1,_external=True)
+		next = url_for('api.get_posts',page=page+1,_external=True)
 	return jsonify({
 		'posts':[post.to_json() for post in posts],
 		'prev':prev,
@@ -32,7 +34,7 @@ def get_post(id):
 @api.route('/posts/',methods=['POST'])
 @permission_required(Permission.WRITE_ARTICLES)
 def new_post():
-	post =Post.from_json(request_json)
+	post = Post.from_json(request.json)
 	post.author = g.current_user
 	db.session.add(post)
 	db.session.commit()
