@@ -9,13 +9,21 @@
 <h4 id="comments">Comments</h4>
 {% if current_user.can(Permission.COMMENT) %}
 <div class="comment-form">
+<<<<<<< HEAD
     {{ wtf.quick_form(form) }}
+=======
+	{{ wtf.quick_form(form) }}
+>>>>>>> 17-app-1
 </div>
 {% endif %}
 {% include '_comments.html' %}
 {% if pagination %}
 <div class="pagination">
+<<<<<<< HEAD
     {{ macros.pagination_widget(pagination, '.post', fragment='#comments', id=posts[0].id) }}
+=======
+	{{ macros.pagination_widget(pagination,'.post',fragment='#comments',id=posts[0].id) }}
+>>>>>>> 17-app-1
 </div>
 {% endif %}
 {% endblock %}

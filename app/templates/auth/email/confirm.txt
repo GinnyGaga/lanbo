@@ -1,13 +1,26 @@
 Dear {{ user.username }},
+<<<<<<< HEAD
 
 Welcome to Flasky!
 
 To confirm your account please click on the following link:
 
 {{ url_for('auth.confirm', token=token, _external=True) }}
+=======
+Welcome to Flasky!
+To confirm your account please click on the following link:
+
+
+{{ url_for('auth.confirm',token=token,_external=True) }}
+>>>>>>> 17-app-1
 
 Sincerely,
 
 The Flasky Team
 
+<<<<<<< HEAD
 Note: replies to this email address are not monitored.
+=======
+Note:replies to this email address are not monitored.
+
+>>>>>>> 17-app-1

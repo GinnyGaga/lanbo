@@ -5,13 +5,21 @@
 
 {% block page_content %}
 <div class="page-header">
+<<<<<<< HEAD
     <h1>Comment Moderation</h1>
+=======
+	<h1>Comment Moderation</h1>
+>>>>>>> 17-app-1
 </div>
 {% set moderate = True %}
 {% include '_comments.html' %}
 {% if pagination %}
 <div class="pagination">
+<<<<<<< HEAD
     {{ macros.pagination_widget(pagination, '.moderate') }}
+=======
+	{{ macros.pagination_widget(pagination,'.moderate') }}
+>>>>>>> 17-app-1
 </div>
 {% endif %}
 {% endblock %}
